@@ -1,0 +1,86 @@
+Output for question 1.
+2
+9
+2
+2.3333333333333335
+1
+0
+4
+20
+
+Output for question 2.
+<class 'str'>
+<class 'str'>
+Kentucky Wildcats
+WildcatsKentucky 
+Wildcats @ Kentucky 
+WildcatsWildcatsWildcats
+
+Output for question 3.
+<class 'float'>
+<class 'float'>
+3.46
+-2.4
+3.0
+
+Output for question 4.
+<class 'int'>
+57
+0.0
+
+Output for question 5.
+<class 'bool'>
+8<7
+False
+<class 'str'>
+<class 'str'>
+<class 'str'>
+
+Output for question 6.
+-23
+56
+-2
+-23.0
+8.0
+
+Output for question 7.
+1
+0.0
+False
+
+Output for question 8.
+False
+True
+True
+True
+
+Output for question 9.
+global # no
+2pirnt # no
+print2 # yes
+_squ # yes
+list # no
+
+Output for question 10.
+this is A1
+this is A2
+
+Output for question 11.
+this is A1
+this is A2
+this is C1
+this is C2
+
+Output for question 12.
+this is A1
+this is A2
+this is B1
+this is B2
+this is C1
+this is C2
+
+Output for question 13.
+this is A1
+this is A2
+this is B1
+this is B2

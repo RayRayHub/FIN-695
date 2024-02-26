@@ -1,0 +1,53 @@
+#import needed modules
+import TickerFirmProvider as tfp
+import matplotlib.pyplot as plt
+from pandas_datareader import data as pdr
+import matplotlib.dates as mdates
+from mpl_finance import candlestick_ohlc
+import yfinance as yfin
+yfin.pdr_override()
+
+while True:
+    # Obtain ticker from user
+    ticker = input("Which company's ticker symbol are you looking for? Or done to exit..\n")
+    if ticker=="done":
+        break
+    else:
+        try:
+            # Obtain start date from user in yyyy-mm-dd
+            start_date = input("What is the start date(yyyy-mm-dd) of you data set?\n")
+            # Obtain end date from user in yyyy-mm-dd
+            end_date = input("What is the end date(yyyy-mm-dd) of you data set?\n")
+
+            #get stock price
+            stock = pdr.get_data_yahoo(ticker, start=start_date, end=end_date)
+            #obtain dates
+            stock['Date']=stock.index.map(mdates.date2num)
+            #choose the four daily prices: open, hihg, low, and close
+            df_ohlc = stock[['Date','Open', 'High', 'Low', 'Close']]
+            #choose figure size
+            figure, fig = plt.subplots(dpi=128, figsize = (8,4))
+            #format date
+            formatter = mdates.DateFormatter('%m-%d-%Y')
+            #choose x-axis
+            fig.xaxis.set_major_formatter(formatter)
+            fig.xaxis_date()
+            plt.setp(fig.get_xticklabels(), rotation = 15)
+            #create teh candlestick chart
+            candlestick_ohlc(fig, 
+                            df_ohlc.values, 
+                            width=0.6, 
+                            colorup='green', 
+                            colordown='red')
+            #put text in the chart that green color means close is higher than open
+            plt.figtext(0.3,0.2,'Green: Close > Open')
+            #put text in the chart that red color means close is lower than open
+            plt.figtext(0.3,0.15,'Red: Close < Open')
+            #put chart title and axis labels
+            plt.title(f'Candlesticks Chart for {tfp.FirmByTicker(ticker)} Stock')
+            plt.ylabel('Price')
+            plt.xlabel('Date')
+            plt.show()
+        except:
+            print("Sorry, not a valid entry!")
+        continue
